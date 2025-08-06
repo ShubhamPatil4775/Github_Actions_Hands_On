@@ -1,4 +1,4 @@
-name: Matrix All Strategies Demo
+name: Matrix Strategies 
 
 on:
   workflow_dispatch:
