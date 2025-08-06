@@ -1,0 +1,29 @@
+name: Matrix strategy
+
+on:
+  workflow_dispatch
+
+jobs:
+ matrix-jobs:
+  runs-on: ${{matrix.os}}
+  strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest] 
+        java-version: [17, 21] 
+      fail-fast: false 
+      max-parallel: 1 
+      
+      include:
+        - os: macos-latest
+          java-version: 17
+        - os: ubuntu-latest
+          java-version: 21
+      exclude:
+        - os: windows-latest
+          java-version: 17
+  steps:
+   - name: Setup Java JDK
+     uses: actions/setup-java@v3.14.1
+     with:
+      java-version: ${{matrix.java-version}}
+      distribution: microsoft
