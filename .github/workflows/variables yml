@@ -1,0 +1,13 @@
+name: Repository Variable 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  repository_variable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Repository Variable
+        run: |
+          echo "${{ vars.MY_VAR }}"
+          echo "${{ vars.MY_NEW_VAR}}"
