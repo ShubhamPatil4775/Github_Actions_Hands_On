@@ -1,4 +1,4 @@
-name: Matrix Strategies
+name: Matrix All Strategies Demo
 
 on:
   workflow_dispatch:
@@ -10,10 +10,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         java-version: [17, 21]
-        include:
+        include: 
           - os: macos-latest
             java-version: 17
-        exclude:
+        exclude: 
           - os: windows-latest
             java-version: 17
       fail-fast: false
@@ -23,4 +23,4 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: ${{matrix.java-version}}
-          distribution: temurin
+          distribution: temurin 
