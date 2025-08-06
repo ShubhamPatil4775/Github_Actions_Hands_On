@@ -7,20 +7,29 @@ jobs:
   matrix-jobs:
     runs-on: ${{ matrix.os }}
     strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        java-version: [17, 21]
-        include: 
-          - os: macos-latest
-            java-version: 17
-        exclude: 
-          - os: windows-latest
-            java-version: 17
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 2
+      matrix:
+        include:
+          - index: 0
+            total: 4
+            os: ubuntu-latest
+            java-version: 17
+          - index: 1
+            total: 4
+            os: ubuntu-latest
+            java-version: 21
+          - index: 2
+            total: 4
+            os: windows-latest
+            java-version: 17
+          - index: 3
+            total: 4
+            os: windows-latest
+            java-version: 21
     steps:
       - name: Setup Java JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3.14.1
         with:
           java-version: ${{matrix.java-version}}
-          distribution: temurin 
+          distribution: microsoft
