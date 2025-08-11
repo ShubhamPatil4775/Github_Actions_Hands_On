@@ -1,0 +1,18 @@
+name: "Deploy to Production"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
+      - name: "Simulate Deployment"
+        run: echo "Deployment to the production environment started."
